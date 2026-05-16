@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://developer-shakib.vercel.app
+
+# Sitemaps
+Sitemap: https://developer-shakib.vercel.app/sitemap.xml
