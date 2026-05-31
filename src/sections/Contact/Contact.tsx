@@ -3,7 +3,7 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Phone, Mail, MapPin, Github, Linkedin, Twitter } from "lucide-react";
 import BlurText from "@/components/ui/blurText";
 
 const Contact = () => {
@@ -65,133 +65,256 @@ const Contact = () => {
       </div>
 
 
-      <div
-        className="max-w-11/12 md:max-w-11/14 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
-        data-aos="fade-up"
-      >
+      <div className="mt-10 max-w-11/12 mx-auto p-6 md:p-10 ">
         <div
-          className="bg-white text-black rounded-2xl p-4 md:p-6 sm:p-8 shadow-lg"
-          data-aos="fade-right"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
+          data-aos="fade-up"
         >
-          <div className="flex flex-col items-center text-center">
-            <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-white mb-4">
-              <img
-                src="https://i.ibb.co.com/GQhkTh80/sk8-24-at-09-22-28-1cea5aae.jpg"
-                alt="Profile"
-                className="w-full h-full object-cover"
+          {/* LEFT SIDE */}
+          <div className="space-y-5" data-aos="fade-right">
+
+            {/* Profile Card */}
+            <div className="bg-white dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-md rounded-2xl overflow-hidden">
+              {/* Banner */}
+              <div className="h-24 bg-gradient-to-r from-teal-400 to-teal-600 relative">
+                <div className="absolute -bottom-10 left-6">
+                  <div className="w-20 h-20 rounded-full ring-4 ring-white dark:ring-gray-900 overflow-hidden shadow-lg">
+                    <img
+                      src="https://i.ibb.co.com/GQhkTh80/sk8-24-at-09-22-28-1cea5aae.jpg"
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Info */}
+              <div className="pt-12 pb-5 px-6">
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+                  Md. Sakib Khan Noyon
+                </h2>
+                <p className="text-teal-600 dark:text-teal-400 text-sm font-medium mt-0.5">
+                  FullStack Web Developer
+                </p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mt-3 leading-relaxed">
+                  Feel free to reach out for opportunities, collaborations, or just to say hi!
+                </p>
+
+                {/* Social links */}
+                <div className="flex gap-2 mt-4">
+                  {[
+                    { href: "https://github.com", icon: Github },
+                    { href: "https://linkedin.com", icon: Linkedin },
+                    { href: "https://twitter.com", icon: Twitter },
+                  ].map((s) => (
+                    <a
+                      key={s.href}
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-8 h-8 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-500/20 hover:text-teal-600 transition"
+                    >
+                      <s.icon size={18} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Info Cards */}
+            <div className="space-y-3">
+              {[
+                {
+                  icon: Phone,
+                  label: "Phone",
+                  value: "(+880) 1727487419",
+                  href: "tel:+8801727487419",
+                },
+                {
+                  icon: Mail,
+                  label: "Email",
+                  value: "web.shakib09@gmail.com",
+                  href: "mailto:web.shakib09@gmail.com",
+                },
+                {
+                  icon: MapPin,
+                  label: "Location",
+                  value: "Sylhet, Bangladesh",
+                  href: null,
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="flex items-center gap-4 bg-white dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-md px-4 py-3 rounded-xl hover:border-teal-300/50 transition"
+                  data-aos="fade-right"
+                >
+                  <div className="w-9 h-9 shrink-0 flex items-center justify-center bg-teal-500 text-white rounded-lg">
+                    <item.icon size={18} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
+                      {item.label}
+                    </p>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="text-sm text-gray-800 dark:text-gray-100 hover:text-teal-600 transition truncate block"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-sm text-gray-800 dark:text-gray-100">{item.value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+
+          </div>
+
+          {/* RIGHT SIDE — Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 space-y-5"
+            data-aos="fade-left"
+          >
+            {/* Header */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">
+                Get in touch
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                I'll get back to you within 24 hours.
+              </p>
+            </div>
+
+            {/* Name + Email */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="name"
+                  className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+                >
+                  Full name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Md. Shakib"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 w-full transition"
+                />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="email"
+                  className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+                >
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="shakib@email.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 w-full transition"
+                />
+              </div>
+            </div>
+
+            {/* Subject */}
+            <div className="flex flex-col gap-1.5">
+              <label
+                htmlFor="subject"
+                className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+              >
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="What's this about?"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 w-full transition"
               />
             </div>
 
-            <h2 className="text-2xl font-bold">Md. Sakib Khan Noyon</h2>
-            <p className="text-teal-600 font-semibold">FullStack Web Developer</p>
-            <p className="text-gray-500 text-sm mt-3">
-              Feel free to reach out for opportunities, collaborations, or just
-              to say hi!
-            </p>
-
-            <div className="mt-6 w-full space-y-4">
-              <div
-                className="flex items-center bg-gray-100 px-4 py-3 rounded-lg transition-colors duration-700 ease-in-out hover:bg-teal-50"
-                data-aos="fade-right"
+            {/* Message */}
+            <div className="flex flex-col gap-1.5">
+              <label
+                htmlFor="message"
+                className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
               >
-                <div className="bg-teal-500 p-2 rounded-lg mr-4 text-white text-xl">📞</div>
-                <div className="text-left">
-                  <p className="text-xs text-gray-600">Phone</p>
-                  <p>(+880) 1727487419</p>
-                </div>
-              </div>
-
-              <div
-                className="flex items-center bg-gray-100 px-4 py-3 rounded-lg transition-colors duration-700 ease-in-out hover:bg-teal-50"
-                data-aos="fade-right"
-              >
-                <div className="bg-teal-500 p-2 rounded-lg mr-4 text-white text-xl">📧</div>
-                <div className="text-left">
-                  <p className="text-xs text-gray-600">Email</p>
-                  <p>web.shakib09@gmail.com</p>
-                </div>
-              </div>
-
-              <div
-                className="flex items-center bg-gray-100 px-4 py-3 rounded-lg transition-colors duration-700 ease-in-out hover:bg-teal-50"
-                data-aos="fade-right"
-              >
-                <div className="bg-teal-500 p-2 rounded-lg mr-4 text-white text-xl">📍</div>
-                <div className="text-left">
-                  <p className="text-xs text-gray-600">Location</p>
-                  <p>Sylhet, Bangladesh</p>
-                </div>
-              </div>
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={5}
+                placeholder="Tell me about your project or inquiry..."
+                value={formData.message}
+                onChange={handleChange}
+                required
+                maxLength={1000}
+                className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 w-full resize-none transition"
+              />
+              <p className="text-right text-xs text-gray-400">
+                {formData.message.length} / 1000
+              </p>
             </div>
-          </div>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 active:scale-[0.98] text-white text-sm font-medium px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+              Send message
+            </button>
+          </form>
+
+
         </div>
-
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white text-black rounded-2xl p-4 md:p-6 sm:p-8 shadow-lg space-y-6"
-          data-aos="fade-left"
-        >
-          <h2 className="text-2xl font-bold">Send Me A Message</h2>
-          <p className="text-sm text-gray-400">
-            Have a project in mind? Fill out the form below.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="bg-gray-100 text-gray-600 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-600 w-full"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="bg-gray-100 text-gray-600 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-600 w-full"
-            />
-          </div>
-
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-            className="bg-gray-100 text-gray-600 border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-teal-600"
+        {/* Map */}
+        <div className="rounded-2xl mt-4 overflow-hidden border border-white/40 dark:border-white/10 h-64 md:h-80 w-full">
+          <iframe
+            title="Sylhet, Bangladesh"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57648.30661042837!2d91.8277!3d24.8949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3750541b5a4f1537%3A0x50fb7ede45f25d4!2sSylhet!5e0!3m2!1sen!2sbd!4v1680000000000"
+            width="100%"
+            height="100%"
+            style={{ border: 0, display: "block" }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           />
+        </div>
+      </div >
 
-          <div>
-            <textarea
-              name="message"
-              rows={5}
-              placeholder="Your Message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              maxLength={1000}
-              className="bg-gray-100 text-gray-600 border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-teal-600"
-            ></textarea>
-            <p className="text-right text-xs text-gray-500 mt-1">
-              {formData.message.length}/1000 characters
-            </p>
-          </div>
 
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-teal-400 to-teal-600 hover:from-teal-500 hover:to-teal-700 cursor-pointer px-4 py-2 rounded shadow text-white font-semibold transition"
-          >
-            Send Message &nbsp; ➤
-          </button>
-        </form>
-      </div>
-    </section>
+
+    </section >
   );
 };
 
