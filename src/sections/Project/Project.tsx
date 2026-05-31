@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Sparkles } from 'lucide-react';
+import BlurText from '@/components/ui/blurText';
 
 const Project = () => {
   useEffect(() => {
@@ -44,9 +46,20 @@ const Project = () => {
         <p className="text-xl text-teal-700 border-b-2 text-center w-fit pb-2 mb-4 mx-auto">
           Visit My Projects & Keep Your Feedback
         </p>
-        <h1 className="text-4xl mb-10 font-bold text-black text-center py-4">
+        {/* <h1 className="text-4xl mb-10 font-bold text-black text-center py-4">
           My <span className="text-teal-600">Projects</span>
-        </h1>
+        </h1> */}
+        <div className="flex items-center justify-center text-center gap-3 mb-4">
+          <Sparkles className="text-purple-500" size={32} />
+          <BlurText
+            text="My Projects"
+            delay={300}
+            animateBy="words"
+            direction="top"
+            className="text-3xl md:text-4xl text-gray-800 font-bold"
+          />
+          <Sparkles className="text-purple-500" size={32} />
+        </div>
 
         <div className="grid gap-8 py-12 px-2 md:px-4 sm:grid-cols-2 lg:grid-cols-3 overflow-x-hidden">
           {projects.map((project, i) => (

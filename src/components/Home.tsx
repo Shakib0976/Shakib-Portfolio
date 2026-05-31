@@ -149,9 +149,8 @@ const Home = () => {
             <div className="h-12 mt-2 dark:text-gray-100 inter-font text-xl md:text-2xl text-gray-700 font-semibold flex items-center justify-center lg:justify-start gap-0">
               <span>{text}</span>
               <span
-                className={`inline-block w-0.5 h-6 bg-teal-500 ml-0.5 transition-opacity duration-100 ${
-                  showCursor ? "opacity-100" : "opacity-0"
-                }`}
+                className={`inline-block w-0.5 h-6 bg-teal-500 ml-0.5 transition-opacity duration-100 ${showCursor ? "opacity-100" : "opacity-0"
+                  }`}
               />
             </div>
           </div>
@@ -307,18 +306,18 @@ const Home = () => {
           <div className="absolute -inset-12 border border-blue-200/20 z-0 dark:border-blue-900/20 rounded-full animate-spin-slow-reverse"></div>
         </div>
 
-        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 hidden lg:block">
+        {/* <div className="fixed  bottom-6 left-1/2 transform -translate-x-1/2 hidden lg:block z-50">
           <div className="flex flex-col items-center gap-2 text-gray-400 animate-bounce">
             <span className="text-sm">Scroll down</span>
             <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
               <div className="w-1 h-3 bg-gray-300 rounded-full mt-2"></div>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
 
       <ProjectSection />
-      
+
       <section id="about" className="scroll-mt-20">
         <About />
       </section>

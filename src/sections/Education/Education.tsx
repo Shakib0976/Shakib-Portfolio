@@ -5,6 +5,8 @@ import { GiOpenBook } from "react-icons/gi";
 import { FaGraduationCap } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Sparkles } from "lucide-react";
+import BlurText from "@/components/ui/blurText";
 
 const Education = () => {
   useEffect(() => {
@@ -16,9 +18,22 @@ const Education = () => {
       <p className="text-xl text-teal-700 border-b-2 text-center w-40 pb-2 mb-4 mx-auto">
         Education
       </p>
-      <h1 className="text-3xl sm:text-4xl mb-5 font-bold text-black text-center py-4">
+      {/* <h1 className="text-3xl sm:text-4xl mb-5 font-bold text-black text-center py-4">
         My <span className="text-teal-600">Academic Journey</span>
-      </h1>
+      </h1> */}
+
+      <div className="flex items-center justify-center text-center gap-3 mb-5">
+        <Sparkles className="text-purple-500" size={32} />
+        <BlurText
+          text="My Education"
+          delay={300}
+          animateBy="words"
+          direction="top"
+          className="text-3xl md:text-4xl text-gray-800 font-bold"
+        />
+        <Sparkles className="text-purple-500" size={32} />
+      </div>
+
 
       <ul className="timeline max-w-11/12 overflow-x-hidden md:max-w-11/14 mx-auto timeline-snap-icon max-md:timeline-compact timeline-vertical">
         <li>

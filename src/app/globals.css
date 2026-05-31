@@ -2,7 +2,7 @@
 @import "tailwindcss";
 @source "src/**/*.{ts,tsx}";
 /* @import "tw-animate-css"; */
-/* @import "shadcn/tailwind.css"; */ 
+/* @import "shadcn/tailwind.css"; */
 /* @import "@fontsource-variable/geist"; */
 
 @custom-variant dark (&:is(.dark *));
@@ -147,7 +147,9 @@ img {
   cursor: pointer;
   white-space: nowrap;
   transform: translateY(20px);
-  transition: transform 0.4s ease 0.2s, background 0.3s ease;
+  transition:
+    transform 0.4s ease 0.2s,
+    background 0.3s ease;
 }
 
 .view-btn:hover {
@@ -213,20 +215,67 @@ img {
 }
 
 @keyframes wave {
-  0% { transform: rotate(0deg); }
-  15% { transform: rotate(14deg); }
-  30% { transform: rotate(-8deg); }
-  40% { transform: rotate(14deg); }
-  50% { transform: rotate(-4deg); }
-  60% { transform: rotate(10deg); }
-  70% { transform: rotate(0deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(14deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .animate-wave {
   display: inline-block;
   transform-origin: 70% 70%;
   animation: wave 2s infinite;
+}
+
+/* skills section scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  animation: scroll 40s linear infinite;
+}
+
+.animate-scroll-reverse {
+  display: flex;
+  animation: scroll-reverse 40s linear infinite;
 }
 
 @theme inline {

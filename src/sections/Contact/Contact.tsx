@@ -3,6 +3,8 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Sparkles } from "lucide-react";
+import BlurText from "@/components/ui/blurText";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -44,12 +46,24 @@ const Contact = () => {
       >
         Contact
       </p>
-      <h1
+      {/* <h1
         className="text-3xl mb-10 sm:text-4xl font-bold text-black text-center py-4"
         data-aos="fade-up"
       >
         Get <span className="text-teal-600">In Touch</span>
-      </h1>
+      </h1> */}
+      <div className="flex items-center justify-center text-center gap-3 mb-4 md:mb-6">
+        <Sparkles className="text-purple-500" size={32} />
+        <BlurText
+          text="Contact Me"
+          delay={300}
+          animateBy="words"
+          direction="top"
+          className="text-3xl md:text-4xl text-gray-800 font-bold"
+        />
+        <Sparkles className="text-purple-500" size={32} />
+      </div>
+
 
       <div
         className="max-w-11/12 md:max-w-11/14 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
