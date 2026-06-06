@@ -74,9 +74,9 @@ const Contact = () => {
           <div className="space-y-5" data-aos="fade-right">
 
             {/* Profile Card */}
-            <div className="bg-white dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-md rounded-2xl overflow-hidden">
+            <div className="bg-white shadow-sm dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-md rounded-2xl overflow-hidden">
               {/* Banner */}
-              <div className="h-24 bg-gradient-to-r from-teal-400 to-teal-600 relative">
+              <div className="h-24 bg-gray-900 relative">
                 <div className="absolute -bottom-10 left-6">
                   <div className="w-20 h-20 rounded-full ring-4 ring-white dark:ring-gray-900 overflow-hidden shadow-lg">
                     <img
@@ -145,10 +145,10 @@ const Contact = () => {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="flex items-center gap-4 bg-white dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-md px-4 py-3 rounded-xl hover:border-teal-300/50 transition"
+                  className="flex items-center gap-4 bg-white shadow-sm dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-md px-4 py-3 rounded-xl hover:border-teal-300/50 transition"
                   data-aos="fade-right"
                 >
-                  <div className="w-9 h-9 shrink-0 flex items-center justify-center bg-teal-500 text-white rounded-lg">
+                  <div className="w-9 h-9 shrink-0 flex items-center justify-center bg-gray-900 text-white rounded-lg">
                     <item.icon size={18} />
                   </div>
                   <div className="min-w-0">
@@ -176,7 +176,7 @@ const Contact = () => {
           {/* RIGHT SIDE — Form */}
           <form
             onSubmit={handleSubmit}
-            className="bg-white dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 space-y-5"
+            className="bg-white dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-sm space-y-5"
             data-aos="fade-left"
           >
             {/* Header */}
@@ -194,7 +194,7 @@ const Contact = () => {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="name"
-                  className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+                  className="text-xs font-medium text-gray-900 dark:text-gray-400 uppercase tracking-wide"
                 >
                   Full name
                 </label>
@@ -212,7 +212,7 @@ const Contact = () => {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="email"
-                  className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+                  className="text-xs font-medium text-gray-900 dark:text-gray-400 uppercase tracking-wide"
                 >
                   Email address
                 </label>
@@ -233,7 +233,7 @@ const Contact = () => {
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="subject"
-                className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+                className="text-xs font-medium text-gray-900 dark:text-gray-400 uppercase tracking-wide"
               >
                 Subject
               </label>
@@ -253,7 +253,7 @@ const Contact = () => {
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="message"
-                className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+                className="text-xs font-medium text-gray-900 dark:text-gray-400 uppercase tracking-wide"
               >
                 Message
               </label>
@@ -276,7 +276,7 @@ const Contact = () => {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 active:scale-[0.98] text-white text-sm font-medium px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 active:scale-[0.98] text-white text-sm font-medium px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -298,7 +298,7 @@ const Contact = () => {
 
         </div>
         {/* Map */}
-        <div className="rounded-2xl mt-4 overflow-hidden border border-white/40 dark:border-white/10 h-64 md:h-80 w-full">
+        <div className="rounded-2xl mt-4 overflow-hidden border border-white/40 dark:border-white/10 h-64 md:h-90 w-full">
           <iframe
             title="Sylhet, Bangladesh"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57648.30661042837!2d91.8277!3d24.8949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3750541b5a4f1537%3A0x50fb7ede45f25d4!2sSylhet!5e0!3m2!1sen!2sbd!4v1680000000000"
