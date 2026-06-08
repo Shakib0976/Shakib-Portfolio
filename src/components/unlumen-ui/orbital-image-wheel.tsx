@@ -45,7 +45,7 @@ export function OrbitalImageWheel({ images = [], className }: OrbitalImageWheelP
 
   return (
     <section className={cn("relative w-full py-20", className)}>
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto container px-4">
         <div className="relative rounded-2xl overflow-hidden bg-gray-900 shadow-2xl">
           <div className="relative w-full aspect-video">
             {images.map((img, idx) => (

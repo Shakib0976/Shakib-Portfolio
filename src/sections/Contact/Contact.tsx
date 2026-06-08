@@ -65,7 +65,7 @@ const Contact = () => {
       </div>
 
 
-      <div className="mt-10 max-w-11/12 mx-auto p-6 md:p-10 ">
+      <div className="mt-10 container mx-auto p-6 md:p-10 ">
         <div
           className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
           data-aos="fade-up"

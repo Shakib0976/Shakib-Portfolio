@@ -173,7 +173,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <div className="fixed max-w-11/12 mx-auto top-4 left-4 right-4 z-50">
+    <div className="fixed container mx-auto top-4 left-4 right-4 z-50">
       <div
         className="flex items-center bg-gradient-to-l from-blue-500/20 via-purple-500/20 to-teal-500/20 text-black rounded-full px-4 py-4 backdrop-blur-[20px] border border-white/10 shadow-lg"
       >

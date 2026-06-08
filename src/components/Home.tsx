@@ -24,7 +24,8 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from "react-icons/si";
-import ProjectSection from "@/sections/Project/ProjectSection";
+import MackBookSection from "@/sections/MackBookSection/MackBookSection";
+// import ProjectSection from "@/sections/Project/ProjectSection";
 
 const Home = () => {
   const words = useMemo(() => ["a MERN Stack Developer", "a Frontend Specialist"], []);
@@ -113,7 +114,7 @@ const Home = () => {
     <div className="text-gray-200 font-sans inter-font">
       <section
         id="home"
-        className="min-h-screen pt-35 max-w-11/12 md:max-w-11/14 px-4 flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-30 gap-10 scroll-mt-20 sm:px-4 mx-auto py-10"
+        className="min-h-screen pt-35 container md:max-w-11/14 px-4 flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-30 gap-10 scroll-mt-20 sm:px-4 mx-auto py-10"
       >
         <div className="text-center lg:text-left max-w-xl xl:min-w-xl mx-auto lg:mx-0">
           <span className="hidden lg:flex items-center w-55 text-teal-500 py-1 px-3 gap-2 rounded-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-teal-500/10 text-sm font-medium backdrop-blur-sm">
@@ -306,17 +307,10 @@ const Home = () => {
           <div className="absolute -inset-12 border border-blue-200/20 z-0 dark:border-blue-900/20 rounded-full animate-spin-slow-reverse"></div>
         </div>
 
-        {/* <div className="fixed  bottom-6 left-1/2 transform -translate-x-1/2 hidden lg:block z-50">
-          <div className="flex flex-col items-center gap-2 text-gray-400 animate-bounce">
-            <span className="text-sm">Scroll down</span>
-            <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-gray-300 rounded-full mt-2"></div>
-            </div>
-          </div>
-        </div> */}
+   
       </section>
 
-      <ProjectSection />
+      {/* <ProjectSection /> */}
 
       <section id="about" className="scroll-mt-20">
         <About />
@@ -328,6 +322,9 @@ const Home = () => {
 
       <section id="projects" className="scroll-mt-20">
         <Project />
+      </section>
+      <section id="MacBook" className="scroll-mt-20">
+        <MackBookSection />
       </section>
 
       <section id="education" className="scroll-mt-20">
