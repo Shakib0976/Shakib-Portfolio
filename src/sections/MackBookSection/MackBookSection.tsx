@@ -1,25 +1,23 @@
  "use client";
 import React from "react";
 import { MacbookScroll } from "@/components/ui/macbook-scroll";
+import Link from "next/link";
 
 export default function MackBookSection() {
   return (
-    <div className="w-full overflow-hidden ">
-      <MacbookScroll
-        title={
-          <span>
-            This Macbook is built with Tailwindcss. <br /> No kidding.
-          </span>
-        }
-        badge={
-          <a href="https://peerlist.io/manuarora">
-            <Badge className="h-10 w-10 -rotate-12 transform" />
-          </a>
-        }
-        src={`/linear.webp`}
-        showGradient={false}
-      />
-    </div>
+  <div className="w-full overflow-hidden ">
+  <MacbookScroll
+    title={
+      <span>
+        Building Modern Web Experiences.
+        <br />
+        Turning Ideas Into Scalable Applications.
+      </span>
+    }
+    src="/eco-food-dashboard.png"
+    showGradient={false}
+  />
+</div>
   );
 }
 // Peerlist logo

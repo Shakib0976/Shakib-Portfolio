@@ -249,7 +249,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Sparkles } from "lucide-react";
 import BlurText from "@/components/ui/blurText";
 
-// Register GSAP ScrollTrigger plugin safely on client-side
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -334,9 +333,9 @@ const Project = () => {
   return (
     <section
       ref={containerRef}
-      className="w-full bg-gradient-to-br from-gray-50 via-white to-gray-100 py-16 md:py-24"
+      className="container mx-auto py-16 md:py-24"
     >
-      <div className="container mx-auto">
+      <div className="">
         <div className="text-center mb-16 md:mb-24">
           <span className="text-sm uppercase tracking-wider text-teal-600 font-semibold bg-teal-50 px-4 py-1.5 rounded-full inline-block mb-4">
             Featured Projects
@@ -365,7 +364,7 @@ const Project = () => {
         </div> */}
 
         {/* Stack Containers */}
-        <div className="flex flex-col gap-16 md:gap-24 pb-24 max-w-5xl mx-auto">
+        <div className="flex flex-col gap-16 md:gap-24 pb-24 ">
           {projects.map((project, index) => (
             <div
               key={project.id}
@@ -411,7 +410,7 @@ const Project = () => {
                   {/* Button */}
                   <Link href={project.link}>
                     <button className="group flex items-center gap-2 text-gray-800 font-semibold text-lg hover:text-teal-600 transition-colors duration-300">
-                      VIEW CASE STUDY
+                      VIEW DETAILS →
 
                       <svg
                         className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
@@ -431,7 +430,7 @@ const Project = () => {
                 </div>
 
                 {/* Right Side */}
-                <div className="relative h-64 sm:h-80 md:h-[400px] w-full overflow-hidden bg-gray-50 order-1 md:order-2">
+                <div className="relative h-64 sm:h-80  w-full overflow-hidden object-contain bg-gray-50 order-1 md:order-2">
                   <Image
                     src={project.img}
                     alt={project.title}
@@ -445,6 +444,27 @@ const Project = () => {
               </div>
             </div>
           ))}
+        </div>
+        <div className="flex justify-center mt-10">
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-teal-600 transition-all duration-300"
+          >
+            View All Projects
+            <svg
+              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>
