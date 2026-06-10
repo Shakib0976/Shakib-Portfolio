@@ -25,6 +25,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import MackBookSection from "@/sections/MackBookSection/MackBookSection";
+import HeroSection from "@/sections/HereoSection/Hero";
 // import ProjectSection from "@/sections/Project/ProjectSection";
 
 const Home = () => {
@@ -112,7 +113,7 @@ const Home = () => {
 
   return (
     <div className="text-gray-200 font-sans inter-font">
-      <section
+      {/* <section
         id="home"
         className="min-h-screen pt-35 container md:max-w-11/14 px-4 flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-30 gap-10 scroll-mt-20 sm:px-4 mx-auto py-10"
       >
@@ -308,7 +309,9 @@ const Home = () => {
         </div>
 
    
-      </section>
+      </section> */}
+
+      <HeroSection></HeroSection>
 
       {/* <ProjectSection /> */}
 

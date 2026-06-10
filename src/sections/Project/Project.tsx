@@ -409,7 +409,7 @@ const Project = () => {
 
                   {/* Button */}
                   <Link href={project.link}>
-                    <button className="group flex items-center gap-2 text-gray-800 font-semibold text-lg hover:text-teal-600 transition-colors duration-300">
+                    <button className="group cursor-pointer flex items-center gap-2 text-gray-800 font-semibold text-lg hover:text-teal-600 transition-colors duration-300">
                       VIEW DETAILS →
 
                       <svg

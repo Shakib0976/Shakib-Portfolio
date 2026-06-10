@@ -1,233 +1,449 @@
+
 "use client";
 
-import { motion } from "framer-motion";
-import { FaDownload, FaArrowRight } from "react-icons/fa";
-import { useEffect, useState } from "react";
-
-const roles = ["MERN Stack Developer", "Frontend Developer", "Problem Solver", "UI/UX Enthusiast"];
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function HeroSection() {
-  const [text, setText] = useState("");
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [deleting, setDeleting] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const firstNameRef = useRef<HTMLSpanElement>(null);
+  const lastNameRef = useRef<HTMLSpanElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const leftContentRef = useRef<HTMLDivElement>(null);
+  const rightContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const current = roles[roleIndex];
-    const speed = deleting ? 50 : 100;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    const timeout = setTimeout(() => {
-      if (!deleting && charIndex < current.length) {
-        setText(current.slice(0, charIndex + 1));
-        setCharIndex((c) => c + 1);
-      } else if (deleting && charIndex > 0) {
-        setText(current.slice(0, charIndex - 1));
-        setCharIndex((c) => c - 1);
-      } else if (!deleting && charIndex === current.length) {
-        setTimeout(() => setDeleting(true), 1500);
-      } else if (deleting && charIndex === 0) {
-        setDeleting(false);
-        setRoleIndex((r) => (r + 1) % roles.length);
-      }
-    }, speed);
+      // Name animations from top
+      tl.fromTo(
+        firstNameRef.current,
+        { y: -120, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1 }
+      )
+        .fromTo(
+          lastNameRef.current,
+          { y: -120, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1 },
+          "-=0.7"
+        )
 
-    return () => clearTimeout(timeout);
-  }, [charIndex, deleting, roleIndex]);
+        // Image from bottom
+        .fromTo(
+          imageRef.current,
+          { y: 150, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1.1 },
+          "-=0.5"
+        )
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-  };
+        // Left content from bottom
+        .fromTo(
+          leftContentRef.current,
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.9 },
+          "-=0.6"
+        )
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as any } },
-  };
+        // Right social links from bottom staggered
+        .fromTo(
+          ".social-link",
+          { y: 80, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, stagger: 0.12 },
+          "-=0.5"
+        );
+    }, containerRef);
 
-  const stats = [
-    { value: "10+", label: "Projects" },
-    { value: "1+", label: "Years Exp" },
-    { value: "5+", label: "Technologies" },
-  ];
-
-  const skills = ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS", "TypeScript"];
-
-  const floatingCards = [
-    { text: "Frontend Dev", style: "absolute -left-4 sm:-left-10 lg:-left-16 top-1/3 z-40", anim: { y: [0, -10, 0] }, dur: 2 },
-    { text: "MERN Stack", style: "absolute -right-6 sm:-right-12 lg:-right-16 top-1/5 z-40", anim: { x: [0, 10, 0] }, dur: 2.5 },
-    { text: "Problem Solver", style: "absolute -right-2 sm:-right-6 lg:-right-10 bottom-1/5 z-40", anim: { x: [0, 8, 0] }, dur: 3 },
-  ];
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="home">
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-40 flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-20">
-        <motion.div
-          className="flex-1 max-w-2xl text-center lg:text-left"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-5">
-            <span className="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
-            <span className="text-xs sm:text-sm font-medium text-teal-600 tracking-widest uppercase">
-              Available for work
-            </span>
-          </motion.div>
+    <section ref={containerRef} className="hero-section container relative overflow-hidden  p-6 md:p-12 lg:p-24">
+      <div className="hero-container relative z-10">
 
-          <motion.div variants={itemVariants} className="mb-1">
-            <span className="text-2xl sm:text-3xl font-semibold text-gray-700">
-              Hi there{" "}
-              <span className="inline-block animate-bounce origin-bottom-right">👋</span>
-            </span>
-          </motion.div>
+        {/* Big name at top */}
+        <div className="hero-name-wrapper">
+          <span ref={firstNameRef} className="hero-name-first">
+            YOUR
+          </span>
+          <span ref={lastNameRef} className="hero-name-last">
+            NAME
+          </span>
+        </div>
 
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-3"
-          >
-            I&apos;m{" "}
-            <span className="relative">
-              <span className="text-teal-600">Md. Shakib</span>
-              <svg
-                className="absolute -bottom-1 left-0 w-full"
-                viewBox="0 0 240 8"
-                fill="none"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 6 C60 2, 180 2, 238 6"
-                  stroke="#0d9488"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-              </svg>
-            </span>
-          </motion.h1>
+        {/* Bottom row: left info | center image | right social */}
+        <div className="hero-bottom">
 
-          <motion.div
-            variants={itemVariants}
-            className="h-10 flex items-center justify-center lg:justify-start mb-5"
-          >
-            <span className="text-lg sm:text-2xl font-semibold text-gray-500">
-              {text}
-              <span className="inline-block w-0.5 h-6 bg-teal-500 ml-0.5 animate-pulse align-middle" />
-            </span>
-          </motion.div>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-lg mx-auto lg:mx-0 mb-7"
-          >
-            I build fast, responsive, and user-friendly web applications using modern
-            technologies like React, Node.js, and MongoDB.
-          </motion.p>
-
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center justify-center lg:justify-start gap-6 sm:gap-10 mb-7"
-          >
-            {stats.map((s, i) => (
-              <div key={i} className="text-center lg:text-left">
-                <p className="text-2xl sm:text-3xl font-bold text-teal-600">{s.value}</p>
-                <p className="text-xs text-gray-400 font-medium tracking-wide">{s.label}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8"
-          >
-            {skills.map((skill, i) => (
-              <span
-                key={i}
-                className="px-3 py-1 text-xs font-semibold rounded-full border border-teal-200 text-teal-700 bg-teal-50 hover:bg-teal-100 transition-colors duration-200"
-              >
-                {skill}
-              </span>
-            ))}
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap gap-3 justify-center lg:justify-start"
-          >
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
-            >
-              View Projects
-              <FaArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" />
+          {/* LEFT — title, description, button */}
+          <div ref={leftContentRef} className="hero-left">
+            <p className="hero-role">Full Stack Developer</p>
+            <p className="hero-description">
+              I build scalable MERN stack applications with clean UI, optimized
+              performance, and real-world problem solving in mind.
+            </p>
+            <a href="/cv.pdf" download className="hero-btn">
+              Download CV ↗
             </a>
-
-            <a
-              href="/Shakib.Resume.docx (5).pdf"
-              download
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-teal-500 text-teal-600 text-sm font-semibold hover:bg-teal-500 hover:text-white transition-all duration-300 hover:-translate-y-0.5"
-            >
-              Download CV
-              <FaDownload className="w-3 h-3 transition-transform duration-300 group-hover:-translate-y-0.5" />
-            </a>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="relative flex justify-center items-center flex-shrink-0"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as any, delay: 0.2 }}
-        >
-          <div className="absolute w-64 h-64 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem] rounded-full border-2 border-dashed border-teal-200/60 animate-spin-slow" />
-          <div className="absolute w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-teal-100 via-blue-50 to-purple-100 blur-2xl opacity-70" />
-
-          <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden ring-4 ring-white shadow-xl z-10">
-            <img
-              src="https://i.ibb.co.com/GQhkTh80/sk8-24-at-09-22-28-1cea5aae.jpg"
-              alt="Md. Shakib"
-              className="w-full h-full object-cover"
-            />
           </div>
 
-          {floatingCards.map((card, i) => (
-            <motion.div
-              key={i}
-              className={`${card.style} bg-white/90 backdrop-blur-sm border border-gray-100 text-gray-800 text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-xl shadow-lg`}
-              initial={{ opacity: 0 }}
-              animate={{ ...card.anim, opacity: 1 }}
-              transition={{ duration: card.dur, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            >
-              <span className="mr-1.5 text-teal-500">●</span>
-              {card.text}
-            </motion.div>
-          ))}
+          {/* CENTER — photo */}
+          <div ref={imageRef} className="hero-image-wrap">
+            <div className="hero-image-inner">
+              {/* Replace /your-photo.png with your actual image path */}
+              <img
+                src="/ShakibLogo.png"
+                alt="Profile"
+                className="hero-photo"
+              />
+            </div>
+          </div>
 
-          <motion.div
-            className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-40 bg-gray-900 text-teal-400 font-mono text-xs px-4 py-2 rounded-xl shadow-lg whitespace-nowrap"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.5 }}
-          >
-            &lt;MERN Stack /&gt;
-          </motion.div>
-        </motion.div>
+          {/* RIGHT — social links */}
+          <div ref={rightContentRef} className="hero-social">
+            {[
+              { label: "LinkedIn", icon: "in", href: "#" },
+              { label: "GitHub", icon: "GH", href: "#" },
+              { label: "Facebook", icon: "fb", href: "#" },
+              { label: "Twitter", icon: "𝕏", href: "#" },
+            ].map(({ label, icon, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <span className="social-icon">{icon}</span>
+                <span className="social-label">{label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-400"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-      >
-        <span className="text-xs tracking-widest uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity }}
-          className="w-5 h-8 rounded-full border-2 border-gray-300 flex justify-center pt-1"
-        >
-          <div className="w-1 h-2 rounded-full bg-teal-500" />
-        </motion.div>
-      </motion.div>
+      <style jsx>{`
+        /* ─── GLOBAL ─────────────────────────────────────── */
+       .hero-section {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+        /* ─── CONTAINER ──────────────────────────────────── */
+       .hero-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+        /* ─── BIG NAME ───────────────────────────────────── */
+        .hero-name-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 24px;
+  line-height: 1;
+  overflow: hidden;
+}
+
+        .hero-name-first {
+          font-family: "Arial Black", "Helvetica Neue", sans-serif;
+          font-size: clamp(64px, 12vw, 160px);
+          font-weight: 900;
+          letter-spacing: -2px;
+          color: transparent;
+          -webkit-text-stroke: 2px #111111;
+          text-transform: uppercase;
+          display: block;
+        }
+
+        .hero-name-last {
+          font-family: "Arial Black", "Helvetica Neue", sans-serif;
+          font-size: clamp(64px, 12vw, 160px);
+          font-weight: 900;
+          letter-spacing: -2px;
+          color: #111111;
+          text-transform: uppercase;
+          display: block;
+        }
+
+        /* ─── BOTTOM ROW ─────────────────────────────────── */
+        .hero-bottom {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: flex-end;
+          gap: 40px;
+          width: 100%;
+        }
+
+        /* ─── LEFT ───────────────────────────────────────── */
+        .hero-left {
+          padding-bottom: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          align-self: flex-end;
+        }
+
+        .hero-role {
+          font-family: "Arial", sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+          color: #111111;
+          margin: 0;
+          letter-spacing: -0.3px;
+        }
+
+        .hero-description {
+          font-family: "Arial", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          color: #555555;
+          line-height: 1.65;
+          max-width: 300px;
+          margin: 0;
+        }
+
+        .hero-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #111111;
+          color: #ffffff;
+          font-family: "Arial", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.3px;
+          padding: 12px 22px;
+          border-radius: 100px;
+          text-decoration: none;
+          width: fit-content;
+          margin-top: 8px;
+          transition: background 0.2s, color 0.2s;
+        }
+
+        .hero-btn:hover {
+          background: #333333;
+        }
+
+        /* ─── CENTER IMAGE ───────────────────────────────── */
+   .hero-image-wrap {
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-image-inner {
+  width: clamp(350px, 55vw, 750px);
+  max-height: 75vh;
+}
+        .hero-photo {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+         margin-top: -20px;
+          object-position:bottom center;
+          display: block;
+          filter: grayscale(15%);
+        }
+
+        /* ─── RIGHT SOCIAL ───────────────────────────────── */
+        .hero-social {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding-bottom: 16px;
+          align-self: flex-end;
+          align-items: flex-end;
+        }
+
+        .social-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: transparent;
+          border: 1.5px solid #dddddd;
+          color: #111111;
+          text-decoration: none;
+          padding: 10px 18px;
+          border-radius: 100px;
+          font-family: "Arial", sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          min-width: 140px;
+          transition: border-color 0.2s, background 0.2s, color 0.2s;
+        }
+
+        .social-link:hover {
+          background: #111111;
+          border-color: #111111;
+          color: #ffffff;
+        }
+
+        .social-icon {
+          font-size: 12px;
+          font-weight: 700;
+          font-style: italic;
+          width: 20px;
+          text-align: center;
+          opacity: 0.7;
+        }
+
+        .social-label {
+          font-size: 13px;
+        }
+
+        /* ─── RESPONSIVE ─────────────────────────────────── */
+      /* ───────── LARGE DEVICE (1200px+) ───────── */
+@media (min-width: 1200px) {
+  .hero-name-first,
+  .hero-name-last {
+    font-size: clamp(90px, 12vw, 180px);
+  }
+
+  .hero-image-inner {
+    width: clamp(400px, 55vw, 800px);
+    max-height: 80vh;
+  }
+
+  .hero-bottom {
+    gap: 50px;
+  }
+}
+
+/* ───────── MEDIUM DEVICE (769px - 1199px) ───────── */
+@media (max-width: 1199px) and (min-width: 769px) {
+  .hero-section {
+    padding: 40px;
+  }
+
+  .hero-name-first,
+  .hero-name-last {
+    font-size: clamp(70px, 11vw, 120px);
+  }
+
+  .hero-bottom {
+    gap: 20px;
+  }
+
+  .hero-image-inner {
+    width: clamp(300px, 50vw, 550px);
+    max-height: 65vh;
+  }
+
+  .hero-description {
+    max-width: 250px;
+  }
+
+  .social-link {
+    min-width: 120px;
+  }
+}
+
+/* ───────── SMALL DEVICE (≤768px) ───────── */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    max-height: none;
+    overflow: visible;
+    padding: 24px 20px;
+  }
+
+  .hero-container {
+    gap: 25px;
+  }
+
+  .hero-name-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .hero-name-first,
+  .hero-name-last {
+    font-size: clamp(50px, 18vw, 90px);
+    line-height: 0.9;
+  }
+
+  .hero-bottom {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .hero-image-wrap {
+    order: 1;
+    justify-content: center;
+  }
+
+  .hero-image-inner {
+    width: min(90vw, 400px);
+    max-height: 55vh;
+  }
+
+  .hero-left {
+    order: 2;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 0;
+  }
+
+  .hero-description {
+    max-width: 340px;
+  }
+
+  .hero-social {
+    order: 3;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 0;
+  }
+
+  .social-link {
+    min-width: 110px;
+    justify-content: center;
+  }
+}
+
+/* ───────── EXTRA SMALL DEVICE (≤480px) ───────── */
+@media (max-width: 480px) {
+  .hero-name-first,
+  .hero-name-last {
+    font-size: clamp(40px, 16vw, 65px);
+  }
+
+  .hero-image-inner {
+    width: 95vw;
+    max-height: 45vh;
+  }
+
+  .hero-role {
+    font-size: 16px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .hero-btn {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
+  .social-link {
+    min-width: 100px;
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}
+      `}</style>
     </section>
   );
 }

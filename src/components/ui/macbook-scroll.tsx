@@ -68,7 +68,8 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="flex min-h-[200vh] container shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80"
+      className="flex min-h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80"
+      style={{ width: "100%", maxWidth: "100%" }}
     >
       <motion.h2
         style={{
@@ -165,11 +166,15 @@ export const Lid = ({
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <img
-          src={src as string}
-          alt="aceternity logo"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
-        />
+        >
+          <source src={src as string} type="video/mp4" />
+        </video>
       </motion.div>
     </div>
   );
