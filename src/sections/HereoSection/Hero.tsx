@@ -58,16 +58,16 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="hero-section container relative overflow-hidden  p-6 md:p-12 lg:p-24">
+    <section ref={containerRef} className="hero-section container relative overflow-hidden  p-16 md:p-12 lg:p-24">
       <div className="hero-container relative z-10">
 
         {/* Big name at top */}
         <div className="hero-name-wrapper">
           <span ref={firstNameRef} className="hero-name-first">
-            YOUR
+            MD. SHAKIB
           </span>
           <span ref={lastNameRef} className="hero-name-last">
-            NAME
+            KHAN
           </span>
         </div>
 
@@ -78,8 +78,7 @@ export default function HeroSection() {
           <div ref={leftContentRef} className="hero-left">
             <p className="hero-role">Full Stack Developer</p>
             <p className="hero-description">
-              I build scalable MERN stack applications with clean UI, optimized
-              performance, and real-world problem solving in mind.
+              Building scalable Full Stack applications with clean and efficient design.
             </p>
             <a href="/cv.pdf" download className="hero-btn">
               Download CV ↗
@@ -141,34 +140,41 @@ export default function HeroSection() {
 }
 
         /* ─── BIG NAME ───────────────────────────────────── */
-        .hero-name-wrapper {
+.hero-name-wrapper {
   display: flex;
   justify-content: center;
   align-items: baseline;
   gap: 24px;
   line-height: 1;
   overflow: hidden;
+  flex-wrap: nowrap; /* ← add this */
+  white-space: nowrap; /* ← add this */
+  margin-top: 50px;
+  position: relative;
+  z-index: 20;
+
 }
+
 
         .hero-name-first {
           font-family: "Arial Black", "Helvetica Neue", sans-serif;
-          font-size: clamp(64px, 12vw, 160px);
+          font-size: clamp(45px, 9vw, 120px);
           font-weight: 900;
           letter-spacing: -2px;
           color: transparent;
           -webkit-text-stroke: 2px #111111;
           text-transform: uppercase;
-          display: block;
+         display: inline;
         }
 
         .hero-name-last {
           font-family: "Arial Black", "Helvetica Neue", sans-serif;
-          font-size: clamp(64px, 12vw, 160px);
+          font-size: clamp(42px, 8vw, 100px);
           font-weight: 900;
           letter-spacing: -2px;
           color: #111111;
           text-transform: uppercase;
-          display: block;
+          display: inline;
         }
 
         /* ─── BOTTOM ROW ─────────────────────────────────── */
@@ -187,11 +193,13 @@ export default function HeroSection() {
           flex-direction: column;
           gap: 12px;
           align-self: flex-end;
+          width:260px;
+         
         }
 
         .hero-role {
           font-family: "Arial", sans-serif;
-          font-size: 18px;
+          font-size: 22px;
           font-weight: 700;
           color: #111111;
           margin: 0;
@@ -200,7 +208,7 @@ export default function HeroSection() {
 
         .hero-description {
           font-family: "Arial", sans-serif;
-          font-size: 14px;
+          font-size: 15px;
           font-weight: 400;
           color: #555555;
           line-height: 1.65;
@@ -301,7 +309,7 @@ export default function HeroSection() {
 @media (min-width: 1200px) {
   .hero-name-first,
   .hero-name-last {
-    font-size: clamp(90px, 12vw, 180px);
+    font-size: clamp(76px, 9vw, 132px);
   }
 
   .hero-image-inner {
@@ -322,7 +330,7 @@ export default function HeroSection() {
 
   .hero-name-first,
   .hero-name-last {
-    font-size: clamp(70px, 11vw, 120px);
+    font-size: clamp(45px, 8vw, 80px);
   }
 
   .hero-bottom {
@@ -350,22 +358,24 @@ export default function HeroSection() {
     max-height: none;
     overflow: visible;
     padding: 24px 20px;
+    padding-top: 110px;
   }
 
   .hero-container {
     gap: 25px;
   }
 
-  .hero-name-wrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
+ .hero-name-wrapper {
+    flex-direction: row; /* ← was column, change to row */
+    align-items: baseline;
+    gap: 12px;
+    margin-top: 5px;
   }
 
   .hero-name-first,
   .hero-name-last {
-    font-size: clamp(50px, 18vw, 90px);
-    line-height: 0.9;
+    font-size: clamp(20px, 8vw, 42px); 
+    line-height: 1;
   }
 
   .hero-bottom {
@@ -415,7 +425,7 @@ export default function HeroSection() {
 @media (max-width: 480px) {
   .hero-name-first,
   .hero-name-last {
-    font-size: clamp(40px, 16vw, 65px);
+    font-size: clamp(26px, 12vw, 35px);
   }
 
   .hero-image-inner {
