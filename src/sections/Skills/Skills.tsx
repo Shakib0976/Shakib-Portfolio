@@ -60,9 +60,9 @@ export default function Skills() {
               return (
                 <div
                   key={index}
-                  className="flex-shrink-0 mx-4 group"
+                  className="flex-shrink-0 md:mx-4 mx-2 group"
                 >
-                  <div className="flex flex-col items-center justify-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 hover:shadow-2xl hover:border-blue-200/50 transition-all duration-500 min-w-[140px]">
+                  <div className="flex flex-col items-center justify-center p-3 md:p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-white/20 hover:shadow-sm md:hover:shadow-2xl hover:border-blue-200/50 transition-all duration-500 min-w-[140px]">
                     <div className="relative mb-4">
                       <div className="absolute inset-0  rounded-full opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></div>
                       <IconComponent
@@ -86,9 +86,9 @@ export default function Skills() {
               return (
                 <div
                   key={index}
-                  className="flex-shrink-0 mx-4 group"
+                  className="flex-shrink-0 md:mx-4 mx-2 group"
                 >
-                  <div className="flex flex-col items-center justify-center p-6 bg-white/60 backdrop-blur-sm rounded-2xl shadow-md border border-white/20 hover:shadow-xl hover:border-purple-200/50 transition-all duration-500 min-w-[140px]">
+                  <div className="flex flex-col items-center justify-center  p-3 md:p-6 bg-white/60 backdrop-blur-sm rounded-2xl shadow-md border border-white/20 hover:shadow-sm md:hover:shadow-2xl hover:border-purple-200/50 transition-all duration-500 min-w-[140px]">
                     <div className="relative mb-4">
                       <div className="absolute inset-0  rounded-full opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></div>
                       <IconComponent
@@ -106,8 +106,8 @@ export default function Skills() {
           </div>
         </div>
 
-        <div className="text-center mt-16">
-          <div className="inline-flex flex-wrap justify-center gap-8 bg-white/50 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+        <div className="text-center mt-16 my-5 ">
+          <div className="inline-flex flex-wrap justify-center gap-4 md:gap-8 shadow-sm bg-white/50 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="text-center">
               <div className="text-2xl font-bold text-teal-600">{skills.length}+</div>
               <div className="text-gray-600 text-sm font-medium">Technologies</div>
