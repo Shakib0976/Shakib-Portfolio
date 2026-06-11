@@ -20,7 +20,6 @@ const dockItems = [
   { id: "skills", to: "#skills", name: "Skills", icon: Code, color: "bg-gray-700" },
   { id: "projects", to: "#projects", name: "Projects", icon: FolderGit2, color: "bg-gray-700" },
   { id: "education", to: "#education", name: "Education", icon: GraduationCap, color: "bg-gray-700" },
-  { id: "gallery", to: "#gallery", name: "Gallery", icon: Image, color: "bg-gray-700" },
   { id: "faq", to: "#faq", name: "Q&A", icon: HelpCircle, color: "bg-gray-700" },
   { id: "contact", to: "#contact", name: "Contact", icon: Mail, color: "bg-gray-700" },
 ];

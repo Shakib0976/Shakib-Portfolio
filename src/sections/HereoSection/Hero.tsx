@@ -16,6 +16,8 @@ export default function HeroSection() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
+      
+
       // Name animations from top
       tl.fromTo(
         firstNameRef.current,
@@ -100,10 +102,10 @@ export default function HeroSection() {
           {/* RIGHT — social links */}
           <div ref={rightContentRef} className="hero-social">
             {[
-              { label: "LinkedIn", icon: "in", href: "#" },
-              { label: "GitHub", icon: "GH", href: "#" },
-              { label: "Facebook", icon: "fb", href: "#" },
-              { label: "Twitter", icon: "𝕏", href: "#" },
+              { label: "LinkedIn", icon: "in", href: "https://www.linkedin.com/in/shakib09/" },
+              { label: "GitHub", icon: "GH", href: "https://github.com/Shakib0976" },
+              { label: "Facebook", icon: "fb", href: "https://www.facebook.com/md.shakib.khan.809698" },
+              { label: "Twitter", icon: "𝕏", href: "https://x.com/ShakibMd5698" },
             ].map(({ label, icon, href }) => (
               <a
                 key={label}
@@ -153,6 +155,24 @@ export default function HeroSection() {
   position: relative;
   z-index: 20;
 
+};
+.hero-name-first,
+.hero-name-last {
+  font-family: "Arial Black", "Helvetica Neue", sans-serif;
+  font-size: clamp(45px, 9vw, 120px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  position: relative;
+
+  /* Glass effect */
+  color: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  text-shadow:
+    0 2px 10px rgba(255,255,255,0.25),
+    0 4px 30px rgba(255,255,255,0.1);
 }
 
 
@@ -193,7 +213,7 @@ export default function HeroSection() {
           flex-direction: column;
           gap: 12px;
           align-self: flex-end;
-          width:260px;
+          width:220px;
          
         }
 
@@ -350,6 +370,7 @@ export default function HeroSection() {
     min-width: 120px;
   }
 }
+  
 
 /* ───────── SMALL DEVICE (≤768px) ───────── */
 @media (max-width: 768px) {
@@ -453,6 +474,8 @@ export default function HeroSection() {
     padding: 8px 14px;
   }
 }
+
+
       `}</style>
     </section>
   );

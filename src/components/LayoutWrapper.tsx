@@ -20,9 +20,9 @@ export default function LayoutWrapper({ children }: { children: ReactNode }) {
 
   return (
     <div className="relative z-10">
-      <aside className="hidden md:flex">
+      {/* <aside className="hidden md:flex">
         <Dock />
-      </aside>
+      </aside> */}
 
       <main>
         <Navbar />
