@@ -131,9 +131,9 @@ const Home = () => {
       <section id="projects" className="scroll-mt-10">
         <Project />
       </section>
-      <section id="MacBook" className="scroll-mt-10">
+      {/* <section id="MacBook" className="scroll-mt-10">
         <MackBookSection />
-      </section>
+      </section> */}
 
       <section id="education" className="scroll-mt-10">
         <Education />
