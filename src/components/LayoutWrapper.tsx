@@ -30,7 +30,7 @@ export default function LayoutWrapper({ children }: { children: ReactNode }) {
       </main>
 
       <footer className="bg-white text-black py-5 border-t-2 border-gray-300">
-        <div className="container mx-auto justify-center px-4 flex flex-col md:flex-row items-center">
+        <div className="r mx-auto justify-center px-4 flex flex-col md:flex-row items-center">
           <div className="flex flex-col-reverse gap-5 justify-center items-center">
             <p className="text-sm mb-4 md:mb-0">
               © 2025 - All rights reserved by <span className="font-semibold">Shakib</span>

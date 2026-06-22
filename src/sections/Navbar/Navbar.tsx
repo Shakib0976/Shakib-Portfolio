@@ -301,7 +301,7 @@ export function Navbar() {
       ref={navRef}
       className="fixed top-3 left-0 right-0 z-50 "
     >
-      <div className="container mx-auto overflow-hidden">
+      <div className=" w-full max-w-[1550px] mx-auto px-5 sm:px-8 lg:px-12 2xl:px-16 overflow-hidden">
         <nav className="bg-white border border-gray-200 rounded-2xl shadow-sm px-5 py-3">
 
           <div className="flex items-center justify-between">
