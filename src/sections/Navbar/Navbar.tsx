@@ -394,15 +394,15 @@ ${activeSection === item.id
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="flex items-center gap-3 rounded-xl px-4 py-2 hover:bg-gray-100 transition"
+                    className="flex items-center gap-3 rounded-xl px-4 py-2 hover:bg-gray-100 transition w-full justify-start"
                   >
                     <Icon size={18} />
                     <span className="font-medium">{item.name}</span>
                   </button>
                 );
               })}
-              <Link href="#contact">
-                <button className="mt-3 border border-black rounded-xl py-3 font-medium hover:bg-black hover:text-white transition">
+              <Link href="#contact" className="w-full">
+                <button className="mt-3 border border-black rounded-xl py-3 font-medium hover:bg-black hover:text-white transition w-full">
                   Hire Me
                 </button>
               </Link>

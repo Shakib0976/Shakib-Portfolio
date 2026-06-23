@@ -985,7 +985,7 @@ const Education = () => {
       `}</style>
 
       <div className="bg-gray-50 min-h-screen py-16 px-4">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-6xl overflow-hidden">
           {/* ── Header ── */}
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-3 mb-4">
