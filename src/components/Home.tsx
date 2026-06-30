@@ -26,6 +26,9 @@ import {
 } from "react-icons/si";
 import MackBookSection from "@/sections/MackBookSection/MackBookSection";
 import HeroSection from "@/sections/HereoSection/Hero";
+import TeamCarousel from "@/app/carusel/projectCerusel";
+import PersonalProject from "@/sections/PersonaProject/PersonalProject";
+
 // import ProjectSection from "@/sections/Project/ProjectSection";
 
 const Home = () => {
@@ -131,12 +134,21 @@ const Home = () => {
       <section id="projects" className="scroll-mt-10">
         <Project />
       </section>
+      <section id="PersonalProjects" className="scroll-mt-10">
+        <PersonalProject />
+      </section>
       {/* <section id="MacBook" className="scroll-mt-10">
         <MackBookSection />
       </section> */}
 
+
+
       <section id="education" className="scroll-mt-10">
         <Education />
+      </section>
+
+      <section id="stack" className="scroll-mt-10">
+        <TeamCarousel />
       </section>
 
       <section id="contact" className="scroll-mt-10">

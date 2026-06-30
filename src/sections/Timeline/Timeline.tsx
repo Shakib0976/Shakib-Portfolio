@@ -42,7 +42,7 @@ const MyTimeline = () => {
         </TimelineItem>
 
         <TimelineItem className="h-40">
-          <TimelineItemDate>2023 – Present</TimelineItemDate>
+          <TimelineItemDate>2023 - Present</TimelineItemDate>
           <TimelineItemTitle>Diploma in Engineering</TimelineItemTitle>
           <TimelineItemDescription>
             Habiganj Polytechnic Institute
@@ -50,7 +50,7 @@ const MyTimeline = () => {
         </TimelineItem>
 
         <TimelineItem className="h-40">
-          <TimelineItemDate>2021 – 2023</TimelineItemDate>
+          <TimelineItemDate>2021 - 2023</TimelineItemDate>
           <TimelineItemTitle>SSC</TimelineItemTitle>
           <TimelineItemDescription>
             Habiganj Technical School & College
