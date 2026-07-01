@@ -26,8 +26,8 @@ import {
 } from "react-icons/si";
 import MackBookSection from "@/sections/MackBookSection/MackBookSection";
 import HeroSection from "@/sections/HereoSection/Hero";
-import TeamCarousel from "@/app/carusel/projectCerusel";
-import PersonalProject from "@/sections/PersonaProject/PersonalProject";
+import CertificatesPage from "@/sections/Certifications/CertificationCard";
+
 
 // import ProjectSection from "@/sections/Project/ProjectSection";
 
@@ -146,6 +146,11 @@ const Home = () => {
       <section id="education" className="scroll-mt-10">
         <Education />
       </section>
+
+      <section id="Certification" className="scroll-mt-10">
+     <CertificatesPage/>
+      </section>
+
 
       {/* <section id="stack" className="scroll-mt-10">
         <TeamCarousel />
