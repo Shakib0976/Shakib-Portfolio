@@ -61,7 +61,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="hero-section bg-white max-h-screen overflow-hidden max-w-[1550px] mx-auto px-5 sm:px-8 lg:px-12 2xl:px-16 relative p-16 md:p-12 lg:p-24"
+      className="hero-section  max-h-screen overflow-hidden max-w-[1550px] mx-auto px-5 sm:px-8 lg:px-12 2xl:px-16 relative p-16 md:p-12 lg:p-24"
     >
       <div className="hero-container relative z-10">
 

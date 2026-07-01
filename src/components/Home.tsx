@@ -134,9 +134,9 @@ const Home = () => {
       <section id="projects" className="scroll-mt-10">
         <Project />
       </section>
-      <section id="PersonalProjects" className="scroll-mt-10">
+      {/* <section id="PersonalProjects" className="scroll-mt-10">
         <PersonalProject />
-      </section>
+      </section> */}
       {/* <section id="MacBook" className="scroll-mt-10">
         <MackBookSection />
       </section> */}
@@ -147,9 +147,9 @@ const Home = () => {
         <Education />
       </section>
 
-      <section id="stack" className="scroll-mt-10">
+      {/* <section id="stack" className="scroll-mt-10">
         <TeamCarousel />
-      </section>
+      </section> */}
 
       <section id="contact" className="scroll-mt-10">
         <Contact />
