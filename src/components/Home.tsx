@@ -27,6 +27,7 @@ import {
 import MackBookSection from "@/sections/MackBookSection/MackBookSection";
 import HeroSection from "@/sections/HereoSection/Hero";
 import CertificatesPage from "@/sections/Certifications/CertificationCard";
+import CertificationsSection from "@/sections/Certifications/CertificationCard";
 
 
 // import ProjectSection from "@/sections/Project/ProjectSection";
@@ -148,7 +149,7 @@ const Home = () => {
       </section>
 
       <section id="Certification" className="scroll-mt-10">
-     <CertificatesPage/>
+     <CertificationsSection/>
       </section>
 
 
