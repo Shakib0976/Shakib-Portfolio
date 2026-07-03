@@ -3,6 +3,7 @@
 import { useEffect, ReactNode } from "react";
 import Lenis from "@studio-freight/lenis";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ThemeProviders from "@/app/Provider/ThemeProvider";
 
 export default function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
@@ -27,7 +28,10 @@ export default function Providers({ children }: { children: ReactNode }) {
 
   return (
     <TooltipProvider>
-      {children}
+      <ThemeProviders>
+        {children}
+      </ThemeProviders>
+
     </TooltipProvider>
   );
 }

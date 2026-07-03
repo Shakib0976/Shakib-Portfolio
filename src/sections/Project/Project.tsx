@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ProjectPreview from "@/components/ProjectPreview/ProjectPreview";
+import { useTheme } from "next-themes";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -21,40 +23,46 @@ const projects = [
     img: "https://i.ibb.co.com/4R1420zh/Gemini-Generated-Image-owkmf7owkmf7owkm.png",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
     link: "/project1",
+    screenshot:"/ProjectPR.png",
+    darkScreenshot:"/ProjectPRD.png",
   },
-  {
-    id: 2,
-    number: "02",
-    year: "2025",
-    category: "Product Apps",
-    title: "Student Toolkit",
-    desc: "We've Helped Businesses Across Industries Achieve Their Goals. Here Are Some Of Our Recent Projects",
-    img: "https://i.ibb.co.com/XfSp66vL/Gemini-Generated-Image-8yye938yye938yye.png",
-    video: "https://www.w3schools.com/html/movie.mp4",
-    link: "/project4",
-  },
-  {
-    id: 3,
-    number: "03",
-    year: "2025",
-    category: "Product Apps",
-    title: "Dev Knowledge",
-    desc: "We've Helped Businesses Across Industries Achieve Their Goals. Here Are Some Of Our Recent Projects",
-    img: "https://i.ibb.co.com/tF99fkh/Gemini-Generated-Image-ulsrnbulsrnbulsr.png",
-    video: "https://www.w3schools.com/html/mov_bbb.mp4",
-    link: "/project2",
-  },
+
+  // {
+  //   id: 2,
+  //   number: "02",
+  //   year: "2025",
+  //   category: "Product Apps",
+  //   title: "Student Toolkit",
+  //   desc: "We've Helped Businesses Across Industries Achieve Their Goals. Here Are Some Of Our Recent Projects",
+  //   img: "https://i.ibb.co.com/XfSp66vL/Gemini-Generated-Image-8yye938yye938yye.png",
+  //   video: "https://www.w3schools.com/html/movie.mp4",
+  //   link: "/project4",
+  // },
+  // {
+  //   id: 3,
+  //   number: "03",
+  //   year: "2025",
+  //   category: "Product Apps",
+  //   title: "Dev Knowledge",
+  //   desc: "We've Helped Businesses Across Industries Achieve Their Goals. Here Are Some Of Our Recent Projects",
+  //   img: "https://i.ibb.co.com/tF99fkh/Gemini-Generated-Image-ulsrnbulsrnbulsr.png",
+  //   video: "https://www.w3schools.com/html/mov_bbb.mp4",
+  //   link: "/project2",
+  // },
 ];
 
 const Project = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
+  const resolveTheme = useTheme();
+
   const addToRefs = (el: HTMLDivElement | null) => {
     if (el && !cardsRef.current.includes(el)) {
       cardsRef.current.push(el);
     }
   };
+  
 
   useEffect(() => {
     const cards = cardsRef.current;
@@ -110,26 +118,21 @@ const Project = () => {
             >
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-6 lg:h-[700px]">
 
-                {/* BIG VIDEO */}
                 <div
                   className={`
-                    relative rounded-[20px] sm:rounded-[28px] md:rounded-[32px] overflow-hidden
-                    h-[220px] sm:h-[280px] md:h-[340px] lg:h-full
-                    lg:col-span-3
-                    ${isEven ? "lg:order-2" : "lg:order-1"}
-                  `}
+    relative
+    rounded-[20px] sm:rounded-[28px] md:rounded-[32px]
+    overflow-hidden
+    h-[220px] sm:h-[280px] md:h-[340px] lg:h-full
+    lg:col-span-3
+    ${isEven ? "lg:order-2" : "lg:order-1"}
+  `}
                 >
-                  <video
-                    src={project.video}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
+                  <ProjectPreview
+                    src={resolveTheme.theme === "dark" ? project.darkScreenshot : project.screenshot}
+                    alt={project.title}
                   />
-                  <div className="absolute inset-0 bg-black/10" />
                 </div>
-
                 {/* INFO + IMAGE */}
                 <div
                   className={`
