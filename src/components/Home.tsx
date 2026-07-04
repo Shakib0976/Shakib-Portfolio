@@ -28,6 +28,8 @@ import MackBookSection from "@/sections/MackBookSection/MackBookSection";
 import HeroSection from "@/sections/HereoSection/Hero";
 import CertificatesPage from "@/sections/Certifications/CertificationCard";
 import CertificationsSection from "@/sections/Certifications/CertificationCard";
+import PersonalProject from "@/sections/PersonaProject/PersonalProject";
+import ServicesSection from "@/sections/Services/Services";
 
 
 // import ProjectSection from "@/sections/Project/ProjectSection";
@@ -135,9 +137,9 @@ const Home = () => {
       <section id="projects" className="scroll-mt-10">
         <Project />
       </section>
-      {/* <section id="PersonalProjects" className="scroll-mt-10">
+      <section id="PersonalProjects" className="scroll-mt-10">
         <PersonalProject />
-      </section> */}
+      </section>
       {/* <section id="MacBook" className="scroll-mt-10">
         <MackBookSection />
       </section> */}
@@ -152,6 +154,8 @@ const Home = () => {
      <CertificationsSection/>
       </section>
 
+
+<ServicesSection/>
 
       {/* <section id="stack" className="scroll-mt-10">
         <TeamCarousel />
